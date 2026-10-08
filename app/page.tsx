@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import ProductCard from "@/components/ProductCard";
+import ProductCatalog from "@/components/ProductCatalog";
 import type { Product } from "@/lib/cart-store";
 
 export const dynamic = "force-dynamic";
@@ -23,13 +23,7 @@ export default async function Home() {
         </p>
       </section>
 
-      {products.length === 0 ? (
-        <p className="py-20 text-center text-lilac-600">Our articles are arriving soon 💫</p>
-      ) : (
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-          {products.map((p) => <ProductCard key={p.id} product={p} />)}
-        </div>
-      )}
+      <ProductCatalog initialProducts={products} />
     </>
   );
 }
